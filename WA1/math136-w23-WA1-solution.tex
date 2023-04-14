@@ -1,0 +1,336 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,enumerate,nicefrac,fancyhdr,hyperref,graphicx,adjustbox}
+\hypersetup{colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue}
+\usepackage[left=2.6cm, right=2.6cm, top=1.5cm, includehead, includefoot]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[d]{esvect}
+
+%% commands
+%% useful macros [add to them as needed]
+% sets
+\newcommand{\C}{{\mathbb{C}}} 
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\F}{{\mathbb{F}}}
+
+% bases
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\mC}{\mathcal{C}}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\mE}{\mathcal{E}}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mO}{\mathcal{O}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mT}{\mathcal{T}}
+
+% linear algebra
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spn}{\operatorname{Span}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\prp}{\operatorname{perp}}
+\newcommand{\refl}{\operatorname{refl}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\nul}{\operatorname{Null}}
+\newcommand{\nully}{\operatorname{nullity}}
+\newcommand{\range}{\operatorname{Range}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\cof}{\operatorname{cof}}
+\newcommand{\Num}{\operatorname{Num}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\ipb}{\langle \thinspace, \rangle}
+\newcommand{\ip}[2]{\left\langle #1, #2\right\rangle} % inner products
+\newcommand{\M}[2]{M_{#1\times #2}(\F)}
+\newcommand{\RREF}{\operatorname{RREF}}
+\newcommand{\cv}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newenvironment{amatrix}[1]{\left[\begin{array}{@{}*{\numexpr#1-1}{c}|c@{}}}{\end{array}\right]}
+\newcommand{\am}[2]{\begin{amatrix}{#1} #2 \end{amatrix}}
+
+% vectors
+\newcommand{\vzero}{\vv{0}}
+\newcommand{\va}{\vv{a}}
+\newcommand{\vb}{\vv{b}}
+\newcommand{\vc}{\vv{c}}
+\newcommand{\vd}{\vv{d}}
+\newcommand{\ve}{\vv{e}}
+\newcommand{\vf}{\vv{f}}
+\newcommand{\vg}{\vv{g}}
+\newcommand{\vh}{\vv{h}}
+\newcommand{\vl}{\vv{\ell}}
+\newcommand{\vm}{\vv{m}}
+\newcommand{\vn}{\vv{n}}
+\newcommand{\vp}{\vv{p}}
+\newcommand{\vq}{\vv{q}}
+\newcommand{\vr}{\vv{r}}
+\newcommand{\vs}{\vv{s}}
+\newcommand{\vt}{\vv{t}}
+\newcommand{\vu}{\vv{u}}
+\newcommand{\vvv}{{\vv{v}}}
+\newcommand{\vw}{\vv{w}}
+\newcommand{\vx}{\vv{x}}
+\newcommand{\vy}{\vv{y}}
+\newcommand{\vz}{\vv{z}}
+
+% display
+\newcommand{\ds}{\displaystyle}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\hint}{\textbf{Hint: }}
+
+% misc
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\rc}{\red{\checkmark}}
+
+%% header
+\pagestyle{fancy}
+\fancyhead[L]{\bf\large MATH136: Linear Algebra 1 \\ Written Assignment 1 Solutions}
+\fancyhead[R]{\bf\large Winter 2023 \\}
+%\fancyfoot[C]{Page \thepage\ of 2}
+\setlength{\headheight}{35pt}
+
+\begin{document}
+	\begin{enumerate}[{\bf Q1.}]
+	
+	%Q1
+	\item
+	Assume $\vec{u}$ and $\vec{v}$ ave non-zero vectors which ave not parallel.
+	To prove parallelogram defined by $\vec{u}$ and $\vec{w} \Rightarrow$ orthogonal diagonals in the parallelogram.
+	since $\vec{u}$ and $\vec{v}$ form diagonals of a rhombus $d_1, d_2$ can be witten as follow
+	$$
+	\begin{aligned}
+	d_1 & =\vec{u}+\vec{w} \\
+	d_2 & =\vec{u}-\vec{w} \\
+	d_1 \cdot d_2 & =(\vec{u}+\vec{w}) \cdot(\vec{u}-\vec{w}) \\
+	& =\vec{u} \cdot \vec{u}-\vec{u} \vec{w}+\vec{u} \cdot \vec{w}-\vec{w} \cdot \vec{w} \\
+	& =\vec{u} \cdot \vec{u}-\vec{w} \cdot \vec{w} \\
+	& =\|\vec{u}\|^2-\|\vec{w}\|^2 \quad \text { since }\|\vec{w}\|=\|\vec{u}\|, \text { so }\|\vec{u}\|^2=\|\vec{w}\|^2 \\
+	& =0
+	\end{aligned}
+	$$
+	To prove $\Rightarrow$, if diagonals are orthogonal
+	$$
+	\begin{aligned}
+	d_1 \cdot d_2 & =0 \\
+	(\vec{u}+\vec{w})(\vec{u}-\vec{w}) & =0 \\
+	\vec{u} \cdot \vec{u}-\vec{u} \cdot \vec{w}+\vec{w} \vec{w}-\vec{w} \cdot \vec{w} & =0 \\
+	\vec{u} \cdot \vec{u} & =\vec{w} \cdot \vec{w} \\
+	||\vec{u}\|^2 & = \|\vec{w}\|^2
+	\end{aligned}
+	$$
+	Hence $\vec{u}, \vec{w}$ have the same magnitude and ave non-parallel, so the formed parallelogram is a vombus.
+
+	% New page for Crowdmark
+	\newpage
+	
+	%Q2
+	\item 
+	\begin{enumerate}
+		%Q2(a)
+		a. Proof by Contradiction
+Assume $\left[\begin{array}{l}1 \\ 2 \\ 2 \\ 3\end{array}\right] \in \operatorname{Span}\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\}$ in $\mathbb{R}^4$ \newline
+		$\Rightarrow \left[\begin{array}{l}1 \\ 2 \\ 2 \\ 3\end{array}\right]=c_1\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right]+c_2\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]$ \newline
+		\newline
+		\begin{center}
+			$1=c_1$ \newline
+			$2=c_1+2 c_2$ \newline
+			$2=c_1+2 c_2$ \newline
+			$3=c_1$ \newline
+			$1=c_1=3$ \newline
+		\end{center}
+
+		$\Rightarrow 1=3$ which is clearly false, hence the contradiction.
+		QED
+		
+		%Q2(b)
+		b. To prove span $\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\} \in \operatorname{span}\left\{\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right],\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]\right\}$ Consider
+			$$
+			\begin{aligned}
+			c_1\left[\begin{array}{l}
+			1 \\
+			1 \\
+			1 \\
+			1
+			\end{array}\right]+c_2\left[\begin{array}{l}
+			0 \\
+			2 \\
+			2 \\
+			0
+			\end{array}\right]=c_3\left[\begin{array}{l}
+			1 \\
+			0 \\
+			0 \\
+			1
+			\end{array}\right]+c_4\left[\begin{array}{l}
+			2 \\
+			0 \\
+			0 \\
+			2
+			\end{array}\right]+c_5\left[\begin{array}{l}
+			0 \\
+			1 \\
+			1 \\
+			0
+			\end{array}\right] \\
+			\Rightarrow c_1=c_3+2 c_4 \\
+			c_1+2 c_2=c_5 \\
+			c_1+2 c_2=c_5 \\
+			c_1=c_3+2 c_4 \\
+			\text { Let } c_3=0, c_4=\frac{c_1}{2}, c_5=c_1+2 c_2
+			\end{aligned}
+			$$
+
+			$\Rightarrow \operatorname{span}\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\}=c_1\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right]+c_2\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right] \in 0\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right]+\frac{c_1}{2}\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right]+\left(c_1+2 c_2\right)\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array} \newline
+			\right]=\operatorname{span}\left\{\left[\begin{array}{c}1 \\ 0 \\ 0 \\ 1\end{array}\right],\left[\begin{array}{c}2 \\ 0 \\ 0 \\ 2\end{array}\right]\left[\left[\begin{array}{l}0 \\ 1 \\ 1\\ 0\end{array}\right]\right\}\right.$ As desired \newline
+			To prove span $\left\{\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right],\left[\begin{array}{l}2 \\ 0 \\ 9 \\ 2\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]\right\} \in \operatorname{span}\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\}$
+			
+			$\Rightarrow e_1\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right]+e_2\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right]+e_3\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]=e_4\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right]+e_5\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]$ \newline
+			$\Rightarrow \begin{array}{ll} & e_1+2 e_2=e_4 \\ & e_3=e_4+2 e_5 \\ & e_3=e_4+2 e_5 \\ & e_1+2 e_2=e_4\end{array}$ \newline
+			\newline
+			$e_3=e_1+2 e_2+2 e_5$ \newline
+			$e_3-2 e_2-e_1=2 e_5$ \newline
+			$e_5=\frac{e_3-2 e_2-e_1}{2}$ \newline
+			
+			Let $e_4=e_1+2 e_2, e_5=\frac{e_3-2 e_2-e_1}{2}$ \newline
+
+			$\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 0 \\ 9 \\ 1\end{array}\right],\left[\begin{array}{l}2 \\ 9 \\ 9 \\ 2\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]\right\}= $
+			$e_1\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right]+e_2\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right]+e_3\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right] \in \left(e_1+2 e_2\right)\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right]+\left(\frac{e_3-2 e_2-e_1}{2}\right)\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]=\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\}$ \newline
+			
+			since span $\left\{\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right],\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right]\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]\right\} \in \operatorname{span}\left\{\left[\begin{array}{c}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\}$
+			and $\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\} \in \operatorname{span}\left\{\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right],\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]\right\}, $
+			$\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 1 \\ 1 \\ 1\end{array}\right]\left[\begin{array}{l}0 \\ 2 \\ 2 \\ 0\end{array}\right]\right\}=\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 0 \\ 0 \\ 1\end{array}\right],\left[\begin{array}{l}2 \\ 0 \\ 0 \\ 2\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1 \\ 0\end{array}\right]\right\}$
+			QED
+
+	\end{enumerate}
+	
+	% New page for Crowdmark
+	\newpage
+	
+	%Q3 
+	\item
+	\begin{enumerate}
+		%Q3(a)
+		a, Proof by Contradiction \newline
+		Suppose $\vec{x} \in \operatorname{Span}\left\{\vec{v}_1, \cdots, \vec{v}_k\right\}$
+		$\vec{x}=c_1 \vec{v}_1+c_2 \vec{v}_2+\cdots+a_k \vec{v}_k$ for $a_1, \cdots, a_k \in \mathbb{F}$ \newline
+		since $\vec{x}$ is orthogonal to $\vec{v}_i$ for $1 \leqslant i \leqslant k$
+		$$
+		\begin{aligned}
+		& \Rightarrow \vec{x} \cdot \vec{v}_1+\vec{x} \cdot \vec{v}_2+\cdots+\vec{x} \cdot \vec{v}_k=0 \\
+		& \vec{x} \cdot a_1 \vec{v}_1+\vec{x} \cdot a_2 \vec{v}_2+\cdots+\vec{x} \cdot a_k \cdot \vec{v}_k=0 \text {, since } a_n \text { are scalars, vectors remain orthogonal } \\
+		& \vec{x} \cdot\left(a_1 \vec{v}_1+a_2 \vec{v}_2+\cdots+a_k \vec{v}_k\right)=0 \\
+		& \vec{x} \cdot \vec{x}=0 \\
+		& \vec{x}=\overrightarrow{0}
+		\end{aligned}
+		$$
+		$\Rightarrow$ Hence the contradiction that $\vec{x}$ is $\overrightarrow{0}$ \newline
+		QED
+		
+		%Q3(b)
+		b. Proof by Contradiction \newline
+		Assume $\operatorname{Span}\{\vec{v}\}=\mathbb{R}^3$ for some $\vec{v} \in \mathbb{R}$ \newline
+		Consider vectors
+		$$
+		\begin{aligned}
+		& {\left[\begin{array}{l}
+		0 \\
+		0 \\
+		1
+		\end{array}\right],\left[\begin{array}{l}
+		1 \\
+		0 \\
+		0
+		\end{array}\right]} \\
+		& \Rightarrow c_1\left[\begin{array}{l}
+		v_1 \\
+		v_2 \\
+		v_3
+		\end{array}\right]=\left[\begin{array}{l}
+		0 \\
+		0 \\
+		1
+		\end{array}\right] \\
+		& \Rightarrow c_2\left[\begin{array}{l}
+		v_1 \\
+		v_2 \\
+		v_3
+		\end{array}\right]=\left[\begin{array}{l}
+		1 \\
+		0 \\
+		0
+		\end{array}\right] \\
+		& c_1 v_1=0, c_1 v_3=1 \Rightarrow v_1=0
+		\end{aligned}
+		$$
+		However $c_2 \cdot v_1=1$, which contradicts $v_1=0$, hence by contradiction $\operatorname{span}\{\vec{v}\} \neq \mathbb{R}^3$ 
+				
+		%Q3(c)
+		c. Proof by Contradiction
+		Assume Span $\left\{\vec{v}_1, \vec{v}_2\right\}=\mathbb{R}^3$ \newline
+		Let $\vec{x}=\vec{v}_1 \times \vec{v}_2 \in \mathbb{R}^3$
+		$\Rightarrow \vec{x} \in \operatorname{Span}\left\{\vec{v}_1, \overrightarrow{v_2}\right\}$ \newline
+		Since $\vec{x}$ is cross product of $\vec{v}_1, \vec{v}_2, \vec{x} \cdot \vec{v}_1=0, \vec{x} \cdot \overrightarrow{v_2}=0 \Rightarrow$
+		By part a, $\vec{x}=\overrightarrow{0}$. \newline
+		By Weekly Practice $Q 7$, since $\vec{v}_1 \times \vec{V}_2=\overrightarrow{0}, \overrightarrow{v_1} / / \vec{v}_2$
+		$\Rightarrow \vec{V}_1=c \vec{V}_2$
+		$\operatorname{Span}\left\{\vec{v}_1, \vec{v}_2\right\}=\operatorname{Span}\left\{c \vec{v}_2, \vec{v}_2\right\}=\operatorname{Span}\left\{\vec{v}_2\right\}$ \newline
+		However, by part $b, \mathbb{R}^3 \neq \operatorname{Span}\{\vec{v}\}$,
+		hence the contradiction. \newline
+		QED
+	\end{enumerate}
+	
+	
+	% New page for Crowdmark
+	\newpage
+	
+	%Q4
+	\item 
+	\begin{enumerate}
+		To prove $L \subseteq P \Rightarrow \vec{a} \in P \wedge d \in \operatorname{Span}\{\vec{V}, \vec{w}\}$
+		$$
+		L=\{\vec{a}+t \vec{d}: t \in \mathbb{R}\}
+		$$
+		Let $t=0, L=\vec{a}$, since $L \subseteq P, \vec{a} \in P$
+		Let $L=p, \vec{a}+0 \vec{d}=\vec{b}+r \vec{v}+s_1 \vec{w}$
+		$$
+		\vec{a}=\vec{b}+r_1 \vec{v}+s_1 \vec{w}
+		$$
+		for $t \neq 0$, substitute $\vec{a}$ with $\vec{b}+r, \vec{v}+s_1, \vec{w}$
+		$t \vec{d} \vec{b}+r_1 \vec{v}+s_1 \vec{w}=\not \vec{b}+r \vec{\nabla}+s \vec{w}$
+		$$
+		\begin{aligned}
+		t \vec{d} & =\left(r-r_1\right) \vec{V}+\left(s-s_1\right) \vec{w} \\
+		\vec{d} & =\frac{r-r_1}{t} \vec{v}+\frac{s-s_1}{t} \vec{w}
+		\end{aligned}
+		$$
+		since $r_1, r, s_1, s, t \in \mathbb{R}, \frac{r-v_1}{t_1}, \frac{s-s_1}{t} \in \mathbb{R} \Rightarrow d \in \operatorname{span}\{\vec{v}, \vec{w}\}$ $\Rightarrow \vec{a} \in P \wedge \vec{d} \in \operatorname{span}\{\vec{v}, \vec{w}\}$
+		
+		To prove $\vec{a} \in P \wedge \vec{d} \in \operatorname{span}\{\vec{v}, \vec{w}\} \Rightarrow L \subseteq p$
+		$$
+		\text { Let } \begin{aligned}
+		& \vec{a}=\vec{b}+r \vec{v}+s \vec{w}, \vec{d}=c \vec{v}+c_2 \vec{w} \\
+		& L=\left\{\vec{b}+r \vec{v}+s \vec{w}+t\left(c_1 \vec{v}+c_2 \vec{w}\right)\right\} \\
+		&=\left\{\vec{b}+r \vec{v}+s \vec{w}+t c_1 \vec{v}+t c_2 \vec{w}\right\} \\
+		&=\left\{\vec{b}+\left(r+t c_1\right) \vec{v}+\left(s+t c_2\right) \vec{w}\right\}
+		\end{aligned}
+		$$
+		Since $r, t, c_1, c_2, s \in \mathbb{R},\left(r+t c_1\right),\left(s+t c_2\right) \in \mathbb{R}$
+		$$
+		\begin{aligned}
+		& \Rightarrow L \subseteq P \\
+		& \Rightarrow L \subseteq P \text { iff } \vec{a} \in P \wedge \vec{d} \in \operatorname{span}\{\vec{v}, \vec{w}\}
+		\end{aligned}
+		$$
+	\end{enumerate}
+
+\end{enumerate}
+\end{document}

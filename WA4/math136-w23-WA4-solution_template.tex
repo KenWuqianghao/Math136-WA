@@ -1,0 +1,480 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,enumerate,nicefrac,fancyhdr,hyperref,graphicx,adjustbox}
+\hypersetup{colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue}
+\usepackage[left=2.6cm, right=2.6cm, top=1.5cm, includehead, includefoot]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[d]{esvect}
+
+%% commands
+%% useful macros [add to them as needed]
+% sets
+\newcommand{\C}{{\mathbb{C}}} 
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\F}{{\mathbb{F}}}
+
+% bases
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\mC}{\mathcal{C}}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\mE}{\mathcal{E}}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mO}{\mathcal{O}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mT}{\mathcal{T}}
+
+% linear algebra
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spn}{\operatorname{Span}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\prp}{\operatorname{perp}}
+\newcommand{\refl}{\operatorname{refl}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\nul}{\operatorname{Null}}
+\newcommand{\nully}{\operatorname{nullity}}
+\newcommand{\range}{\operatorname{Range}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\cof}{\operatorname{cof}}
+\newcommand{\Num}{\operatorname{Num}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\ipb}{\langle \thinspace, \rangle}
+\newcommand{\ip}[2]{\left\langle #1, #2\right\rangle} % inner products
+\newcommand{\M}[2]{M_{#1\times #2}(\F)}
+\newcommand{\RREF}{\operatorname{RREF}}
+\newcommand{\cv}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newenvironment{amatrix}[1]{\left[\begin{array}{@{}*{\numexpr#1-1}{c}|c@{}}}{\end{array}\right]}
+\newcommand{\am}[2]{\begin{amatrix}{#1} #2 \end{amatrix}}
+
+% vectors
+\newcommand{\vzero}{\vv{0}}
+\newcommand{\va}{\vv{a}}
+\newcommand{\vb}{\vv{b}}
+\newcommand{\vc}{\vv{c}}
+\newcommand{\vd}{\vv{d}}
+\newcommand{\ve}{\vv{e}}
+\newcommand{\vf}{\vv{f}}
+\newcommand{\vg}{\vv{g}}
+\newcommand{\vh}{\vv{h}}
+\newcommand{\vl}{\vv{\ell}}
+\newcommand{\vm}{\vv{m}}
+\newcommand{\vn}{\vv{n}}
+\newcommand{\vp}{\vv{p}}
+\newcommand{\vq}{\vv{q}}
+\newcommand{\vr}{\vv{r}}
+\newcommand{\vs}{\vv{s}}
+\newcommand{\vt}{\vv{t}}
+\newcommand{\vu}{\vv{u}}
+\newcommand{\vvv}{{\vv{v}}}
+\newcommand{\vw}{\vv{w}}
+\newcommand{\vx}{\vv{x}}
+\newcommand{\vy}{\vv{y}}
+\newcommand{\vz}{\vv{z}}
+
+% display
+\newcommand{\ds}{\displaystyle}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\hint}{\textbf{Hint: }}
+
+% misc
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\rc}{\red{\checkmark}}
+
+%% header
+\pagestyle{fancy}
+\fancyhead[L]{\bf\large MATH136: Linear Algebra 1 \\ Written Assignment 4 Solutions}
+\fancyhead[R]{\bf\large Winter 2023 \\}
+%\fancyfoot[C]{Page \thepage\ of 2}
+\setlength{\headheight}{35pt}
+
+\begin{document}
+	\begin{enumerate}[{\bf Q1.}]	
+		%Q1
+		\item
+		\begin{enumerate}
+			%Q1(a)
+			\item 
+			Since $\lambda$ is an eigenvalue of $A$
+			$\operatorname{det}(A-\lambda I)=0$ for matrix $I-A$
+			$$
+			\begin{aligned}
+			\operatorname{det}(I-A-(1 \cdot \lambda) I) & =\operatorname{det}(I-A-I+\lambda I) \\
+			& =\operatorname{det}(-A+\lambda I) \\
+			& =-\operatorname{det}(A-\lambda I) \\
+			& =-0 \\
+			& =0
+			\end{aligned}
+			$$
+			Hence $1-\lambda$ is an eigenvalue of matrix $I-A$.
+			%Q1(b)
+			\item 
+			Since $\mu$ is an eigenvalue of matrix $I-A$
+			$$
+			\begin{aligned}
+			& \operatorname{det}(I-A-\mu I)=0 . \\
+			& \operatorname{det}(-A+(I-\mu I))=0 . \\
+			& \operatorname{det}(A-(1-\mu) I)=-0=0 .
+			\end{aligned}
+			$$
+			If $\lambda$ is an eigenvalue of $A$ then $\operatorname{det}(A-\lambda I)=0$
+			so there exist $\lambda$ such that
+			$$
+			\begin{aligned}
+			-\lambda & =-(1-\mu) \\
+			\mu-1 & =-\lambda \\
+			\mu & =1-\lambda
+			\end{aligned}
+			$$
+
+			%Q1(c)
+			\item
+			Proof by Contradiction \newline
+			Assume $I-A$ is not invertible then $I-A$ must have an eigenvalue where
+			$$
+			\mu=0
+			$$
+			According to Q1.b, there exist an eigenvalue $\lambda$ tor $A$ where
+			$$
+			\begin{aligned}
+			& \mu=1-\lambda \\
+			& 0=1-\lambda \\
+			& \lambda=1
+			\end{aligned}
+			$$
+			Since $|\lambda|<1$ for all $\lambda$ \newline
+			$I-A$ is invertible, hence the contradiction and the statement is true. 
+
+		\end{enumerate}
+		
+		% New page for Crowdmark
+		\newpage
+		
+		%Q2
+		\item 
+		\begin{enumerate}
+			%Q2(a)
+			\item 
+			When $n=0$.
+			$$
+			\begin{aligned}
+			& a_n=a_0=7 \\
+			& a_{n+1}=a_1=26 . \\
+			& A^n \cdot \vec{v}=A^0 \cdot \vec{v}=I_2 \cdot \vec{v}=\vec{v}=\left[\begin{array}{l}
+			26 \\
+			7
+			\end{array}\right]=\left[\begin{array}{l}
+			a_{n+1} \\
+			a_n
+			\end{array}\right]
+			\end{aligned}
+			$$
+			Assume that when $n=k \quad k \in \mathbb{R} \wedge k \geqslant 0$.
+			$$
+			A^k \vec{v}=\left[\begin{array}{l}
+			a_{k+1} \\
+			a_k
+			\end{array}\right]
+			$$
+			when $n=k+1$
+			$$
+			\begin{aligned}
+			A^{k+1} \vec{v} & =A \cdot A^k \vec{v} \\
+			& =\left[\begin{array}{cc}
+			7 & -10 \\
+			1 & 0
+			\end{array}\right]\left[\begin{array}{l}
+			a_{k+1} \\
+			a_k
+			\end{array}\right] \\
+			& =\left[\begin{array}{c}
+			7 a_{k+1}-10 a_k \\
+			a_{k+1}
+			\end{array}\right]
+			\end{aligned}
+			$$
+			As provided, $a_n=7 a_{n-1}-10 a_{n-2}$
+			$$
+			7 a_{k+1}-10 a_k=a_{k+1+1}=a_{k+2} .
+			$$
+			$$
+			\begin{aligned}
+			& 7 a_{k+1}-10 a_k=a_{k+1+1}=a_{k+2} . \\
+			& \text { so } A^{k+1} \vec{v}=\left[\begin{array}{l}
+			a_{k+2} \\
+			a_{k+1}
+			\end{array}\right]
+			\end{aligned}
+			$$
+			so statement is also true for $n=k+1$
+			\newline Hence by the principle of mathematical induction, the statement is true.
+			%Q2(b)
+			\item 
+			For $A=\left[\begin{array}{cc}1 & -10 \\ 1 & 0\end{array}\right]$
+			\newline Consider $\operatorname{det}(A-\lambda I)=0$
+			$$
+			\begin{aligned}
+			\operatorname{det}\left(\left[\begin{array}{cc}
+			7-\lambda & -10 \\
+			1 & -\lambda
+			\end{array}\right]\right) & =0 \\
+			(7-\lambda)(-\lambda)-1 \times(-10) & =0 \\
+			\lambda^2-7 \lambda+10 & =0 \\
+			(\lambda-2)(\lambda-5) & =0 \\
+			\lambda_1=2 ; \lambda_2 & =5
+			\end{aligned}
+			$$
+			For $\lambda_1=2$. \newline
+			Consider $(A-\lambda I) \vec{v}=\overrightarrow{0}$
+			$$
+			\begin{gathered}
+			{\left[\begin{array}{cc}
+			5 & -10 \\
+			1 & -2
+			\end{array}\right] \vec{v}=\overrightarrow{0}} \\
+			r_1 \rightarrow r_1-4 r_2 \\
+			r_2 \rightarrow r_2-\frac{1}{5} r_1 \\
+			{\left[\begin{array}{cc}
+			1 & -2 \\
+			0 & 0
+			\end{array}\right] \vec{v}=\overrightarrow{0}} \\
+			x_1-2 x_2=0 \\
+			\quad x_2=x_2 \\
+			\Rightarrow \vec{v}=x_2\left[\begin{array}{l}
+			2 \\
+			1
+			\end{array}\right]
+			\end{gathered}
+			$$
+			so $\vec{v}_1=\left[\begin{array}{l}2 \\ 1\end{array}\right]$ is an eigenvector of $A$ for $\lambda_1=2$.
+			For $\lambda_2=5$. \newline
+			Consider $(A-\lambda I) \vec{v}=\overrightarrow{0}$
+			$$
+			\left[\begin{array}{cc}
+			2 & -10 \\
+			1 & -5
+			\end{array}\right] \vec{v}=\overrightarrow{0} .
+			$$
+			$$
+			\begin{gathered}
+			{\left[\begin{array}{cc}
+			1 & -5 \\
+			0 & 0
+			\end{array}\right] \vec{v}=\overrightarrow{0}} \\
+			x_1-5 x_2=0 \\
+			x_2=x_2 \\
+			\vec{v}=x_2\left[\begin{array}{l}
+			5 \\
+			1
+			\end{array}\right]
+			\end{gathered}
+			$$
+			so $\vec{v}_2=\left[\begin{array}{l}5 \\ 1\end{array}\right]$ is an eigenvector of $A$ for $\lambda_2=5$.
+			$$
+			\begin{aligned}
+			& \text { so } p=\left[\begin{array}{ll}
+			2 & 5 \\
+			1 & 1
+			\end{array}\right] \\
+			& p^{-1}=\frac{1}{\operatorname{det} p} \cdot\left[\begin{array}{cc}
+			1 & -5 \\
+			-1 & 2
+			\end{array}\right] \\
+			& =\frac{1}{2-5} \cdot\left[\begin{array}{cc}
+			1 & -5 \\
+			-1 & 2
+			\end{array}\right] \\
+			& =-\frac{1}{3} \cdot\left[\begin{array}{cc}
+			1 & -5 \\
+			1 & 2
+			\end{array}\right] \text {. } \\
+			& \text { us } A=P D P^{-1} \\
+			& P^{-1} A P=P^{-1} P D P^{-1} P \\
+			& D=P^{-1} A P \\
+			& =-\frac{1}{3} \cdot\left[\begin{array}{cc}
+			1 & -5 \\
+			-1 & 2
+			\end{array}\right] \cdot\left[\begin{array}{cc}
+			7 & -10 \\
+			1 & 0
+			\end{array}\right] \cdot\left[\begin{array}{ll}
+			2 & 5 \\
+			1 & 1
+			\end{array}\right] \\
+			& =-\frac{1}{3}\left[\begin{array}{cc}
+			2 & -10 \\
+			-5 & 10
+			\end{array}\right] \cdot\left[\begin{array}{ll}
+			2 & 5 \\
+			1 & 1
+			\end{array}\right] \\
+			& =-\frac{1}{3}\left[\begin{array}{cc}
+			-6 & 0 \\
+			0 & -15
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			2 & 0 \\
+			0 & 5
+			\end{array}\right] \\
+			&
+			\end{aligned}
+			$$
+
+			%Q2(c)
+			\item 
+			According to Q2.c
+			$$
+			\begin{aligned}
+			& A^n \vec{v}=\left[\begin{array}{l}
+			a_{n+1} \\
+			a_n
+			\end{array}\right] \\
+			& \text { so } a_n=\left[\begin{array}{ll}
+			0 & 1
+			\end{array}\right] \cdot\left[\begin{array}{c}
+			a_{w_n}
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			0 & 1
+			\end{array}\right] \cdot A^n \cdot\left[\begin{array}{c}
+			26 \\
+			7
+			\end{array}\right] \\
+			& \text { according to (b) } \\
+			& a_n=\left[\begin{array}{ll}
+			0 & 1
+			\end{array}\right]\left(p O P^{-1}\right)^n\left[\begin{array}{c}
+			26 \\
+			7
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			0 & 1
+			\end{array}\right] \underbrace{\left(P D P^{-1}\right)\left(B D P^{-1}\right) \cdots\left(P D P^{-1}\right)}_{P D P^{-1} \times n}\left[\begin{array}{c}
+			26 \\
+			7
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			0 & 1
+			\end{array}\right] P \cdot D^n \cdot P^{-1} \cdot\left[\begin{array}{c}
+			26 \\
+			7
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			0 & 1
+			\end{array}\right] \cdot\left[\begin{array}{ll}
+			2 & 5 \\
+			1 & 1
+			\end{array}\right] \cdot\left[\begin{array}{cc}
+			2 & 0 \\
+			0 & 5
+			\end{array}\right]^n \cdot\left(-\frac{1}{3}\right)\left[\begin{array}{cc}
+			1 & -5 \\
+			-1 & 2
+			\end{array}\right] \cdot\left[\begin{array}{c}
+			26 \\
+			7
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			1 & 1
+			\end{array}\right] \cdot\left[\begin{array}{cc}
+			2^n & 0 \\
+			0 & 5^n
+			\end{array}\right] \cdot\left(-\frac{1}{3}\right) \cdot\left[\begin{array}{c}
+			-9 \\
+			-12
+			\end{array}\right] \\
+			& =\left[\begin{array}{ll}
+			2^n & 5^n
+			\end{array}\right] \cdot\left[\begin{array}{l}
+			3 \\
+			4
+			\end{array}\right] \\
+			& a_n=3 \cdot 2^n+4 \cdot 5^n \\
+			&
+			\end{aligned}
+			$$
+			Hence the statement is true.
+		\end{enumerate}
+		
+		% New page for Crowdmark
+		\newpage
+		
+		%Q3 
+		\item
+		\begin{enumerate}
+			%Q3(a)
+			\item 
+			As $T$ is a linear transformation. If $T(\vec{u}) \neq \vec{o}$ then $\vec{u} \neq \overrightarrow{0}$. Therefore, for all $\vec{w} \in w: \vec{w} \neq \overrightarrow{0}$. $u \neq \overrightarrow{0}$, which means $\overrightarrow{0} \notin S_{\vec{w}}$, so the statement is false.
+			%Q3(b)
+			\item 
+			Since $T$ is a linear transformation.
+			$$
+			T(\vec{O})=\overrightarrow{0}
+			$$
+			Since $u$ and $w$ are subspaces of $\mathbb{F}^n$ $\overrightarrow{0} \in U$ and $\overrightarrow{0} \in W$
+			$$
+			\text { so } \quad \overrightarrow{0} \in S_w
+			$$
+			For $\vec{x}, \vec{y} \in S w$.
+			$$
+			\begin{aligned}
+			\text { so } & \vec{x} \in U ; T(\vec{x}) \in W \\
+			& \vec{y} \in U ; T(\vec{y}) \in W
+			\end{aligned}
+			$$
+			Consider $c \vec{x}+\vec{y}: c \in \mathbb{R}$ \newline
+			Since $u$ is a subspace of $\mathbb{F}^n$, $c \vec{x}+\vec{y} \in u$ \newline
+			Since $W$ is a subspace of $\mathbb{F}^n$ \newline
+			$C\left(\vec{x}^{\prime}\right)+T(\vec{y}) \in W$ \newline
+			Since $T$ is a linear transformation.
+			$$
+			c T(\vec{x})+T(\vec{y})=T((\vec{x}+\vec{y})
+			$$
+			Hence $T(c \vec{x}+\vec{y}) \in W$, $c \vec{x}+\vec{y} \in S_w$ \newline
+			Therefore, the statement is true.
+		\end{enumerate}
+		
+		% New page for Crowdmark
+		\newpage
+		
+		%Q4
+		\item
+		\begin{enumerate}
+			%Q4(a)
+			\item 
+			Since $\left\{\overrightarrow{b_1}, \cdots, \overrightarrow{b_k}\right\}$ is linearly independent then $c_1 \vec{b}_1+\cdots+c_k \vec{b}_k=\overrightarrow{0}$ only has trivial solution. Since $\vec{x}_i$ is a solution to $A \vec{x}=\vec{b}_i$ for $i=1 \ldots, k$ $A \overrightarrow{x_i}=\overrightarrow{b_1}$ \newline
+			$c_1 A \vec{x}_1+\cdots+c_k A \vec{x}_k=\overrightarrow{0}$ only has trivial solution. \newline
+			$A\left(c_1 \vec{x}_1+\cdots+c_k \vec{x}_k\right)=\overrightarrow{0}$ only has trivial solution. \newline
+			Since $\left\{\overrightarrow{b_1}: \cdots, \overrightarrow{b_{11}}\right\}$ is linearly independent,
+			so there must exist $\overrightarrow{b_i} \neq 0$. \newline
+			Also we have $A \vec{x}_i=\vec{b}$, so $\operatorname{rank}(A) \neq 0$. \newline
+			Modifying $A\left(c_1 \overrightarrow{x_1}+\cdots+c_k \vec{x}_k\right)=\overrightarrow{0}$ we can have
+			$c_1 \vec{x}+\cdots+c_k \overrightarrow{x_k}=\overrightarrow{0}$ has only trivial solution \newline
+			hence $\left\{\vec{x}_1, \cdots, \vec{x}_k\right\}$ is linearly independent.
+			%Q4(b)
+			\item 
+			consider $c_1 \vec{b}_1+\cdots+c_k \vec{b}_k=\overrightarrow{0}$.
+			$$
+			\begin{aligned}
+			c_1 A \overrightarrow{x_1}+\cdots+c_k A \overrightarrow{x_k} & =\overrightarrow{0} . \\
+			A\left(c_1 \overrightarrow{x_1}+\cdots+c_k \overrightarrow{x_k}\right) & =\overrightarrow{0} \\
+			c_1 \overrightarrow{x_1}+\cdots+c_k \overrightarrow{x_k} & \in \operatorname{Null}(A)
+			\end{aligned}
+			$$
+			Since $\operatorname{rank}(A)=n$, Null $(A)=\{\overrightarrow{0}\}$ \newline
+			so $A\left(c_1 \vec{x}_1+\cdots+c_k \overrightarrow{x_k}\right)=\overrightarrow{0}$, if and only if $c_1 \overrightarrow{x_1}+\cdots+c_{k} \overrightarrow{x_{k}}=\overrightarrow{0}$.
+			as $\left\{\vec{x}_1, \cdots, \vec{x}_k\right\}$ is linearly independent. \newline
+			So $A\left(c_1 \overrightarrow{x_1}+\cdots+c_k \vec{x}_k\right)=0$ has only trivial solution, therefore, $\left\{\overrightarrow{b_1}, \cdots, \overrightarrow{b_k}\right\}$ is linearly independent.
+		\end{enumerate}
+	\end{enumerate}
+\end{document}

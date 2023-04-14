@@ -1,0 +1,345 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,enumerate,nicefrac,fancyhdr,hyperref,graphicx,adjustbox}
+\hypersetup{colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue}
+\usepackage[left=2.6cm, right=2.6cm, top=1.5cm, includehead, includefoot]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[d]{esvect}
+
+%% commands
+%% useful macros [add to them as needed]
+% sets
+\newcommand{\C}{{\mathbb{C}}} 
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\F}{{\mathbb{F}}}
+
+% bases
+\newcommand{\mA}{\mathcal{A}}
+\newcommand{\mB}{\mathcal{B}}
+\newcommand{\mC}{\mathcal{C}}
+\newcommand{\mD}{\mathcal{D}}
+\newcommand{\mE}{\mathcal{E}}
+\newcommand{\mL}{\mathcal{L}}
+\newcommand{\mM}{\mathcal{M}}
+\newcommand{\mO}{\mathcal{O}}
+\newcommand{\mP}{\mathcal{P}}
+\newcommand{\mS}{\mathcal{S}}
+\newcommand{\mT}{\mathcal{T}}
+
+% linear algebra
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spn}{\operatorname{Span}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\prp}{\operatorname{perp}}
+\newcommand{\refl}{\operatorname{refl}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\nul}{\operatorname{Null}}
+\newcommand{\nully}{\operatorname{nullity}}
+\newcommand{\range}{\operatorname{Range}}
+\renewcommand{\ker}{\operatorname{Ker}}
+\newcommand{\col}{\operatorname{Col}}
+\newcommand{\row}{\operatorname{Row}}
+\newcommand{\cof}{\operatorname{cof}}
+\newcommand{\Num}{\operatorname{Num}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\ipb}{\langle \thinspace, \rangle}
+\newcommand{\ip}[2]{\left\langle #1, #2\right\rangle} % inner products
+\newcommand{\M}[2]{M_{#1\times #2}(\F)}
+\newcommand{\RREF}{\operatorname{RREF}}
+\newcommand{\cv}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newenvironment{amatrix}[1]{\left[\begin{array}{@{}*{\numexpr#1-1}{c}|c@{}}}{\end{array}\right]}
+\newcommand{\am}[2]{\begin{amatrix}{#1} #2 \end{amatrix}}
+
+% vectors
+\newcommand{\vzero}{\vv{0}}
+\newcommand{\va}{\vv{a}}
+\newcommand{\vb}{\vv{b}}
+\newcommand{\vc}{\vv{c}}
+\newcommand{\vd}{\vv{d}}
+\newcommand{\ve}{\vv{e}}
+\newcommand{\vf}{\vv{f}}
+\newcommand{\vg}{\vv{g}}
+\newcommand{\vh}{\vv{h}}
+\newcommand{\vl}{\vv{\ell}}
+\newcommand{\vm}{\vv{m}}
+\newcommand{\vn}{\vv{n}}
+\newcommand{\vp}{\vv{p}}
+\newcommand{\vq}{\vv{q}}
+\newcommand{\vr}{\vv{r}}
+\newcommand{\vs}{\vv{s}}
+\newcommand{\vt}{\vv{t}}
+\newcommand{\vu}{\vv{u}}
+\newcommand{\vvv}{{\vv{v}}}
+\newcommand{\vw}{\vv{w}}
+\newcommand{\vx}{\vv{x}}
+\newcommand{\vy}{\vv{y}}
+\newcommand{\vz}{\vv{z}}
+
+% display
+\newcommand{\ds}{\displaystyle}
+\newcommand{\qand}{\quad\text{and}}
+\newcommand{\qandq}{\quad\text{and}\quad}
+\newcommand{\hint}{\textbf{Hint: }}
+
+% misc
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\rc}{\red{\checkmark}}
+
+%% header
+\pagestyle{fancy}
+\fancyhead[L]{\bf\large MATH136: Linear Algebra 1 \\ Written Assignment 2 Solutions}
+\fancyhead[R]{\bf\large Winter 2023 \\}
+%\fancyfoot[C]{Page \thepage\ of 2}
+\setlength{\headheight}{35pt}
+
+\begin{document}
+	\begin{enumerate}[{\bf Q1.}]
+		
+		%Q1
+		\item
+		Proof by Induction \newline
+			Base Case
+			$$
+			\begin{aligned}
+			& n=2 \\
+			& A^2=A A=\left[\begin{array}{lll}
+			a & 1 & 0 \\
+			0 & a & 1 \\
+			0 & 0 & a
+			\end{array}\right]\left[\begin{array}{lll}
+			a & 1 & 0 \\
+			0 & a & 1 \\
+			0 & 0 & a
+			\end{array}\right] \\
+			& =\left[\begin{array}{ccc}
+			a^2 & 2 a & 1 \\
+			0 & a^2 & 2 a \\
+			0 & 0 & a^2
+			\end{array}\right] \\
+			& =\left[\begin{array}{ccc}
+			a^2 & 2 a^{2-1} & \frac{2(2-1)}{2} a^{2-2} \\
+			0 & a^2 & 2 a^{2-1} \\
+			0 & 0 & a^2
+			\end{array}\right] \\
+			&
+			\end{aligned}
+			$$
+			Base case holds. \newline
+
+			$$
+			\begin{aligned}
+			A^{k+1} & =A^k A \\
+			& =\left[\begin{array}{ccc}
+			a^k & k a^{k-1} & \frac{k(k-1)}{2} a^{k-2} \\
+			0 & a^k & k a^{k-1} \\
+			0 & 0 & a^k
+			\end{array}\right] \cdot\left[\begin{array}{ccc}
+			a & 1 & 0 \\
+			0 & a & 1 \\
+			0 & 0 & a
+			\end{array}\right] \\
+			& =\left[\begin{array}{ccc}
+			a^{k+1} & a^k+k a^k & k a^{k-1}+\frac{k(k-1)}{2} a^{k-1} \\
+			0 & a^{k+1} & a^k+k a^k \\
+			0 & 0 & a^{k+1}
+			\end{array}\right] \\
+			& =\left[\begin{array}{ccc}
+			a^{k+1} & (k+1) a^k & \frac{(k+1) k}{2} a^{k-1} \\
+			0 & a^{k+1} & (k+1) a^k \\
+			0 & 0 & a^{k+1}
+			\end{array}\right]
+			\end{aligned}
+			$$
+			Hence, by principle of mathematical induction, the statement is true. \newline
+			QED
+		% New page for Crowdmark
+		\newpage
+		
+		%Q2
+		\item 
+		\begin{enumerate}
+			%Q2(a)
+			\item 
+			Assume $L_1: \mathbb{F}^m \rightarrow \mathbb{F}^n$ and $L_2: \mathbb{F}^{n} \rightarrow \mathbb{F}^{\text {m}}$ are inverses of $T$ \newline
+			$T\left(L_1(\vec{v})\right)=\vec{v}$, for all $\vec{v} \in \mathbb{F}^m$ (Definition of inverse) \newline
+			$L_2\left(T\left(L_1(\vec{v}))\right)=L_2(\vec{v})\right.$ (Apply $L_2$ to both sides of the equation) \newline
+			$L_1 \vec{v}=L_2 \vec{v} \quad$ (Definition of inverse) \newline
+			QED \newline
+
+			%Q2(b)
+			\item 
+			Assume $T: \mathbb{F}^n \rightarrow \mathbb{F}^{m}$ is an invertible linear transformation and
+			$L: \mathbb{F}^m \rightarrow \mathbb{F}^n$ is its inverse
+			$$
+			\begin{aligned}
+			& L(T(\vec{x}+\vec{y})) \\
+			= & L(T(\vec{x})+T(\vec{y})) \text { (Definition of Linear Transformation) } \\
+			= & \vec{x}+\vec{y}(\text { Definition of Inverse) } \\
+			= & L(T(\vec{x}))+L(T(\vec{y})) \text { (Definition of Linear Transformation) }
+			\end{aligned}
+			$$
+			Since we know $T$ is linear transformation, it is also onto.
+			$$
+			\begin{aligned}
+			& \Rightarrow\{T(\vec{x})+T(\vec{y})\}=\mathbb{F}^m \\
+			& L(T(c \vec{x})) \\
+			&= L(C T(\vec{x})) \text { (Definition of Linear Transformation) } \\
+			&=c\vec{x} \text { (Definition of Inverse) } \\
+			&= c L(T(\vec{x})) \text { (Definition of Inverse) } \\
+			& \text { Similarly, since } T \text { is onto } \\
+			& \Rightarrow\{T(c \vec{x})\}=\mathbb{F}^m
+			\end{aligned}
+			$$
+			since $L$ satisfies the clefinition of a linear transformation, $L$ is a linear transformation.
+			QED
+			%Q2(c)
+			\item
+			Assume $T_A: \mathbb{F}^n \rightarrow \mathbb{F}^m$ is a linear trans formation determined by $A \in M_{u \times n}(\mathbb{F})$
+			\newline $\Rightarrow$ \newline
+			Assume $T_A$ is invertible,
+			$$
+			T_A=A \vec{x}, \vec{x} \in \mathbb{F}^n
+			$$
+			Let $L$ also be determined by a matrix $B$
+			$$
+			\begin{aligned}
+			& L_B=B \vec{x}, \vec{x} \in \mathbb{F}^m \\
+			& L_B\left(T_A(\vec{x})\right)=\vec{x} \text { (Definition of Inverse) } \\
+			& L_B(A \vec{x})=\vec{x} \\
+			& B A \vec{x}=\vec{x} \\
+			& B A=I_n
+			\end{aligned}
+			$$
+			$\Rightarrow A$ is invertible when $L$ is determined by $B$, inverse of $A$
+			\newline $\Leftarrow$ \newline 
+			Assume $A$ is invertable
+			$$
+			\begin{aligned}
+			A A^{-1} & =I_n \text { (Definition of Invert table) } \\
+			A A^{-1} \vec{x} & =\vec{x} \\
+			T_A\left(A^{-1} \vec{x}\right) & =\vec{x}
+			\end{aligned}
+			$$
+			Also ,
+			$$
+			\begin{aligned}
+			& A^{-1} A \vec{x}=\vec{x} \\
+			& A^{-1} T_A(\vec{x})=\vec{x}
+			\end{aligned}
+			$$
+			Hence, we can create a matrix function $L: \mathbb{F}^n \rightarrow \mathbb{F}^m$ determined by matrix $A^{-1}$ where when $A^{-1}$ subbed into above equations
+			$$
+			\begin{aligned}
+			& T_A\left(L_{A^{-1}}(\vec{x})\right)=\vec{x} \\
+			& L_{A^{-1}}\left(T_A(\vec{x})\right)=\vec{x}
+			\end{aligned}
+			$$
+			which satisfies the definition of invertability for $T_A$. \newline
+			QED \newline
+		\end{enumerate}
+		
+		% New page for Crowdmark
+		\newpage
+		
+		%Q3 
+		\item
+		Direct Proof \newline
+		Let $\vec{u}$ be an aubitvary vector $\in \mathbb{F}^n$,
+		since $\mathbb{F}^h=\operatorname{span}\left\{\vec{v}_1 \ldots v_k\right\}$
+		$$
+		\begin{aligned}
+		\vec{u}=a \vec{v}_1+\cdots & +k \vec{v}_k \\
+		T(\vec{u}) & =T\left(a \vec{v}_1+\cdots+k \vec{v}_k\right) \\
+		& =a T\left(\vec{v}_1\right)+\cdots+k T\left(\vec{v}_k\right) \quad \text { (Definition of Linear Transformation) } \\
+		& =a S\left(\overrightarrow{v_1}\right)+\cdots+k s\left(\vec{v}_k\right) \text { (Sub with } T\left(\vec{v}_j\right)=s\left(\vec{v}_i\right) \\
+		& =s\left(a \vec{v}_1\right)+\cdots+s\left(k \vec{v}_k\right) \quad \text { (Definition of Linear Transformation) } \\
+		& =s\left(a \vec{v}_1+\cdots+k \vec{v}_k\right) \quad \text { (Definition of Linear Transformation) } \\
+		& =s(\vec{u})
+		\end{aligned}
+		$$
+		since $\vec{u}$ is arbitrary, \newline
+		$T(\vec{v})=S(\vec{v})$ for all $\vec{v} \in \mathbb{F}^h$
+		$$
+		\begin{aligned}
+		& \text { QED } \\
+		\end{aligned}
+		$$
+		
+		% New page for Crowdmark
+		\newpage
+		
+		%Q4
+		\item
+		\begin{enumerate}
+			%Q4(a)
+			\item 
+			False, disproof by counterexample \newline
+			Let $\vec{v} \in \mathbb{R}^n$, pick $\vec{v}=-\vec{u}$ for $\vec{u} \in \mathbb{R}^n$
+			$\Rightarrow T(\vec{v})=T(-\vec{u})=\|\vec{u}\|$
+			However,
+			$$
+			-T(\vec{u})=-\|\vec{u}\| \neq\|\vec{u}\|
+			$$
+			Hence, the statement is false
+			%Q4(b)
+			\item 
+			Direct Proof \newline
+			Let $\vec{u}, \vec{v} \in \mathbb{R}^n$
+			$$
+			\begin{aligned}
+			\Rightarrow T(\vec{u}+\vec{v}) & =\vec{x}(\vec{u}+\vec{v}) \\
+			& =\vec{u} \vec{x}+\vec{v} \vec{x} \\
+			& =T(\vec{u})+T(\vec{v}) \\
+			\Rightarrow T(c \vec{v}) & =c \vec{v} \cdot \vec{x} \\
+			& =c T(\vec{v})
+			\end{aligned}
+			$$
+			Therefore, $T$ satisfies definition of linear transfornmtion. \newline 
+			QED
+			%Q4(c)
+			\item 
+			From Q2.c, we know A is invertible \newline 
+			By invertibility criteria, $T_A$ is one to one which implies that whenever
+			$$
+			\begin{aligned}
+			& T_A(\vec{x})=T_A(\vec{y}) \\
+			& \Rightarrow \vec{x}=\vec{y}
+			\end{aligned}
+			$$
+			which shows uniqueness. \newline
+			By invertibility criteria, $T_A$ is also onto, \newline
+			$\Rightarrow$ Range $(T)=\mathbb{F}^n$ and $\ddot{y} \in \mathbb{F}^n$ which shows existence.
+			\newline QED
+			%Q4(d)
+			\item 
+			Let $A^{-1} \in M_{u \times n}$ be inverse of $A$
+			$$
+			\begin{aligned}
+			A B & =A^{\top} \\
+			A^{-1} A B & =A^{-1} A^{\top} \\
+			I_n B & =A^{-1} A^{\top} \\
+			B & =A^{-1} A^{\top} \\
+			\Rightarrow B^{-1} & =\left(A^{\top}\right)^{-1} A
+			\end{aligned}
+			$$
+			We know $\left(A^{\top}\right)^{-1}$ exists since it is just $\left(A^{-1}\right)^{\top}$
+			$$
+			\begin{aligned}
+			B^{-1} B & =\left(A^{\top}\right)^{-1} A A^{-1} A^{\top} \\
+			& =I_n \\
+			B B^{-1} & =A^{-1} A^{\top}\left(A^{\top}\right)^{-1} A \\
+			& =I_n
+			\end{aligned}
+			$$
+			so $B$ is invertable. \newline
+			QED
+		\end{enumerate}
+		
+	\end{enumerate}
+\end{document}
